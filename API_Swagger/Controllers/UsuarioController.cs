@@ -71,8 +71,9 @@ namespace API_Swagger.Controllers
       {
         Subject = new ClaimsIdentity(new Claim[]
           {
-                    new Claim(ClaimTypes.Name, usuarioViewModelOutput.Login.ToString()),
-                    new Claim(ClaimTypes.Role, usuarioViewModelOutput.Email.ToString())
+            new Claim(ClaimTypes.NameIdentifier, usuarioViewModelOutput.Codigo.ToString()),
+            new Claim(ClaimTypes.Name, usuarioViewModelOutput.Login.ToString()),
+            new Claim(ClaimTypes.Role, usuarioViewModelOutput.Email.ToString())
           }),
         NotBefore = DateTime.UtcNow,
         Expires = DateTime.UtcNow.AddDays(5),

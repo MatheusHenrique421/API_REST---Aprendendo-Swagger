@@ -44,8 +44,8 @@ namespace API_Swagger.Controllers
       cursos.Add(new CursoViewModelOutput()
       {
         Login = "",
-        Descricao = "teste",
-        Nome = "teste"
+        Descricao = "Funcionou a Autenticação",
+        Nome = "Matheus Henrique"
       });
 
       return Ok(cursos);

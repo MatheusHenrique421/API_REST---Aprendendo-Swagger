@@ -24,7 +24,7 @@ namespace API_Swagger
       Configuration = configuration;
     }
 
-    public IConfiguration Configuration { get; }
+    public IConfiguration Configuration { get; set; }
 
     // This method gets called by the runtime. Use this method to add services to the container.
     public void ConfigureServices(IServiceCollection services)
@@ -46,6 +46,7 @@ namespace API_Swagger
           Type = SecuritySchemeType.ApiKey,
           Scheme = "Bearer"
         });
+
         c.AddSecurityRequirement(new OpenApiSecurityRequirement
         {
           {
@@ -94,7 +95,7 @@ namespace API_Swagger
       //      };
       //    });
 
-      var key = Encoding.ASCII.GetBytes(Configuration.GetSection("JwtConfigurations:Secret").Value);
+      var key = Encoding.ASCII.GetBytes(Configuration.GetSection("JwtConfigurations:Secret").Value);      
       services.AddAuthentication(x =>
       {
         x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -119,8 +120,7 @@ namespace API_Swagger
             return Task.CompletedTask;
           },
           OnAuthenticationFailed = c =>
-          {
-            c.Response.WriteAsync(c.Exception.ToString()).Wait();
+          {            
             return Task.CompletedTask;
           }
         };
@@ -170,10 +170,11 @@ namespace API_Swagger
       }
 
       app.UseRouting();
-
-      app.UseAuthorization();
+      //Primeiro autentico depois autorizo, problema que ficamos um tempão verificando.
       app.UseAuthentication();
-
+      //Cuidar a ordem das Batatinhas
+      app.UseAuthorization();
+      
       app.UseEndpoints(endpoints =>
       {
         endpoints.MapControllers();
