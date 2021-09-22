@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>API_Swagger</name>
+    </assembly>
+    <members>
+        <member name="M:API_Swagger.Controllers.CursoController.Post(API_Swagger.Model.Cursos.CursoViewModelInput)">
+            <summary>
+            Este serviço permite cadastrar curso para usuário Autenticado.
+            </summary>
+            <param name="cursoViewModelInput"></param>
+            <returns>Retorna status 201 e dados do curso do usuário</returns>
+        </member>
+        <member name="M:API_Swagger.Controllers.CursoController.Get">
+            <summary>
+            Este Serviço permite obter todos os cursos ativos do usuário.
+            </summary>
+            <returns>Retorna status ok e dados do curso do usuário</returns>
+        </member>
+        <member name="M:API_Swagger.Controllers.UsuarioController.Logar(API_Swagger.Model.Usuarios.LoginViewModelInput)">
+            <summary>
+            Teste
+            </summary>
+            <param name="loginViewModelInput"></param>
+            <returns>Ok, dados do Usuário e o token em caso de sucesso</returns>
+        </member>
+    </members>
+</doc>
